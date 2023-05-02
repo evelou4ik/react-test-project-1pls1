@@ -1,0 +1,81 @@
+{
+  "carts": [
+    {
+      "title": "Title",
+      "focus": "Contraceptive Health",
+      "raised": 5000,
+      "entries": 10,
+      "statuses": ["active", "winner_notified"],
+      "status": "active",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Childcare",
+      "raised": 5000,
+      "entries": 10,
+      "statuses": ["active"],
+      "status": "inactive",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Education",
+      "raised": 7000,
+      "entries": 10,
+      "statuses": ["inactive", "scheduled"],
+      "status": "active",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Medical Infrastructure",
+      "raised": 10000,
+      "entries": 10,
+      "statuses": ["completed"],
+      "status": "inactive",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Food Access",
+      "raised": 10000,
+      "entries": 10,
+      "statuses": ["inactive", "draft"],
+      "status": "active",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Clothing Drive",
+      "raised": 10000,
+      "entries": 10,
+      "statuses": ["inactive", "scheduled"],
+      "status": "active",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    },
+    {
+      "title": "Title",
+      "focus": "Vaccines",
+      "raised": 10000,
+      "entries": 10,
+      "statuses": ["Completed"],
+      "status": "active",
+      "link": "https://www.google.com.ua",
+      "start_date": "1681230673",
+      "end_date": "1681230673"
+    }
+  ]
+}
