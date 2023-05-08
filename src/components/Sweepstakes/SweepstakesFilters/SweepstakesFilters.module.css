@@ -1,0 +1,38 @@
+.filters-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    display: inline-block;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #303852;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.btn {
+    margin: 0 5px;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition-property: background-color, box-shadow;
+    transition-duration: .3s;
+}
+
+.btn:hover {
+    background-color: #fff;
+    box-shadow: 0px 10px 10px rgba(48, 56, 82, 0.2);
+}
+
+.btn.active {
+    background-color: #fff;
+    box-shadow: 0px 10px 10px rgba(48, 56, 82, 0.2);
+}

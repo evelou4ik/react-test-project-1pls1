@@ -5,7 +5,7 @@
 }
 
 .nav-menu ul li:not(:last-child) {
-   margin-bottom: 22px;
+    margin-bottom: 22px;
 }
 
 .nav-menu ul li a {
