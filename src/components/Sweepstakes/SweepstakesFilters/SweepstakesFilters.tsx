@@ -1,16 +1,16 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { changeFilterStatus, selectAllSweepstakes } from '../../store/sweepstakesSlice';
+import { changeFilterStatus} from '../../store/sweepstakesSlice';
 
 import Button from '../../UI/Button/Button';
 import classes from './SweepstakesFilters.module.css';
+import sweepstakesClasses from '../Sweepstakes.module.css'
 
 const SweepstakesFilters = () => {
   const dispatch = useAppDispatch();
-  const listOfSweepstakes = useAppSelector(selectAllSweepstakes);
-  const sweepstakeFilterStatus = useAppSelector((state) => state.sweepstakes.filterStatus);
+  const { sweepstakesArray, filterStatus } = useAppSelector((state) => state.sweepstakes)
 
-  const countOfCompletedSweepstakes = listOfSweepstakes.filter((item) => {
+  const countOfCompletedSweepstakes = sweepstakesArray.filter((item) => {
     return item.statuses.find((status) => status.toLowerCase() === 'completed');
   });
 
@@ -20,26 +20,26 @@ const SweepstakesFilters = () => {
 
   return (
     <div className={classes['filters-wrapper']}>
-      <span className={`${classes.text} ${classes.title} `}>Filters:</span>
+      <span className={` ${sweepstakesClasses.text} ${classes.text} ${classes.title} `}>Filters:</span>
       <Button
-        className={`${classes.btn} ${classes.text}  ${sweepstakeFilterStatus === 'all' ? classes.active : ''}`}
+        className={`${classes.btn} ${classes.text}  ${filterStatus === 'all' ? classes.active : ''}`}
         type="button"
         onClick={() => onChangeStatus('all')}>
         All
       </Button>
       <Button
-        className={`${classes.btn} ${classes.text} ${sweepstakeFilterStatus === 'active' ? classes.active : ''}`}
+        className={`${classes.btn} ${sweepstakesClasses.text} ${classes.text} ${filterStatus === 'active' ? classes.active : ''}`}
         type="button"
         onClick={() => onChangeStatus('active')}>
         Active
       </Button>
       <Button
-        className={`${classes.btn} ${classes.text} ${sweepstakeFilterStatus === 'inactive' ? classes.active : ''}`}
+        className={`${classes.btn} ${sweepstakesClasses.text} ${classes.text} ${filterStatus === 'inactive' ? classes.active : ''}`}
         type="button"
         onClick={() => onChangeStatus('inactive')}>
         Inactive
       </Button>
-      <span>{countOfCompletedSweepstakes.length} Completed</span>
+      <span className={`${sweepstakesClasses.text} ${classes.text}`}>{countOfCompletedSweepstakes.length} Completed</span>
     </div>
   );
 };

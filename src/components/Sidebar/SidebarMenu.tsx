@@ -3,79 +3,83 @@ import { NavLink } from 'react-router-dom';
 
 import classes from './SiderbarMenu.module.css';
 
-import homeIcon from '../../assets/home-icon.svg';
-import organizationIcon from '../../assets/organiz-icon.svg';
-import donorsIcon from '../../assets/donors-icon.svg';
-import sweepstakesIcon from '../../assets/sweepstakes-icon.svg';
-import usersIcon from '../../assets/users-icon.svg';
-import registrationIcon from '../../assets/registr-icon.svg';
-import settingsIcon from '../../assets/settings-icon.svg';
-import notifyIcon from '../../assets/notific-icon.svg';
+import {ReactComponent as HomeIcon} from '../../assets/home-icon.svg';
+import {ReactComponent as OrganizationIcon} from '../../assets/organiz-icon.svg';
+import {ReactComponent as DonorsIcon} from '../../assets/donors-icon.svg';
+import {ReactComponent as SweepstakesIcon} from '../../assets/sweepstakes-icon.svg';
+import {ReactComponent as UsersIcon} from '../../assets/users-icon.svg';
+import {ReactComponent as RegistrationIcon} from '../../assets/registr-icon.svg';
+import {ReactComponent as SettingsIcon} from '../../assets/settings-icon.svg';
+import {ReactComponent as NotifyIcon} from '../../assets/notific-icon.svg';
+
+
+
+const setActive = ({isActive}: any) => isActive ? classes['active-link'] : '';
 
 const SidebarMenu = () => {
   return (
     <nav className={classes['nav-menu']}>
       <ul>
         <li>
-          <NavLink to={`/home`}>
+          <NavLink to={`/home`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={homeIcon} alt="" />
+              <HomeIcon className={classes['link-icon']}/>
             </div>
             <span>Home</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={organizationIcon} alt="" />
+              <OrganizationIcon className={classes['link-icon']}/>
             </div>
             <span>Organizations</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={donorsIcon} alt="" />
+              <DonorsIcon className={classes['link-icon']}/>
             </div>
             <span>Donors</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`sweepstakes`}>
+          <NavLink to={`sweepstakes`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={sweepstakesIcon} alt="" />
+              <SweepstakesIcon className={classes['link-icon']}/>
             </div>
             <span>Sweepstakes</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={usersIcon} alt="" />
+              <UsersIcon className={classes['link-icon']}/>
             </div>
             <span>Users</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={registrationIcon} alt="" />
+              <RegistrationIcon className={classes['link-icon']}/>
             </div>
             <span>Registration</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={settingsIcon} alt="" />
+              <SettingsIcon className={classes['link-icon']}/>
             </div>
             <span>Settings</span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={`*`}>
+          <NavLink to={`*`} className={setActive}>
             <div className={classes['img-wrapper']}>
-              <img src={notifyIcon} alt="" />
+              <NotifyIcon className={classes['link-icon']}/>
             </div>
             <span>Notifications</span>
           </NavLink>

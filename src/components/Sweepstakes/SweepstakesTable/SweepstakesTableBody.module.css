@@ -1,0 +1,105 @@
+.table {
+    border-spacing: 20px 15px;
+}
+
+.table-title {
+    padding-left: 25px;
+    text-align: initial;
+    color: #A098AB;
+    font-weight: 400;
+}
+
+.line-wrapper {
+    outline: 1px solid #F2EEF9;
+    border-radius: 10px;
+}
+
+.column {
+    padding: 15px 25px;
+    font-weight: 400;
+    color: #63517A;
+}
+
+.status-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.status {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1.25;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.status--active {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #71B078;
+    border-color: RGBA(113,176,120,0.5);
+    color: #71B078
+}
+
+.status--winner_notified {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #6DB5D1;
+    border-color: RGBA(109,181,209,0.5);
+    color: #6DB5D1;
+}
+
+.status--inactive {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #D3584B;
+    border-color: RGBA(211,88,75,0.5);
+    color: #D3584B;
+}
+
+.status--scheduled {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #EDBC33;
+    border-color: RGBA(237,188,51,1);
+    color: #EDBC33;
+}
+
+.status--completed {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #315B9C;
+    border-color: RGBA(49,91,156,1);
+    color: #315B9C;
+}
+
+.status--draft {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #9A83B7;
+    border-color: RGBA(154,131,183,1);
+    color: #9A83B7;
+}
+
+.btns-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    margin: 0 5px;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 500;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 35px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn--promote {
+    background-color: #6DB5D1;
+}
+
+.btn--accept {
+    background-color: #71B078;
+}
+
+.btn--decline {
+    background-color: #D3584B;
+}
+

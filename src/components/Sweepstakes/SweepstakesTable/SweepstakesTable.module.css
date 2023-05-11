@@ -1,0 +1,45 @@
+.cart-wrapper {
+    border: 1px solid #F2EEF9;
+    border-radius: 10px;
+}
+
+.heading--promote {
+    margin-bottom: 31px;
+}
+
+.url-text {
+    display: inline-block;
+    margin-bottom: 35px;
+    padding: 10px 50px;
+    background-color: #fff;
+    border: 1px solid #EFEFEF;
+    border-radius: 40px;
+
+}
+
+.url-text a {
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #63517A;
+}
+
+a:active {
+    color: #63517A;
+}
+
+.sweepstake-btn {
+    padding: 16px;
+    border-radius: 54px;
+    border-color: transparent;
+    transition-property: background-color, color;
+    transition-duration: .5s;
+}
+
+.sweepstake-btn--promote {
+    margin: 0 12px;
+    min-width: 140px;
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 600;
+}

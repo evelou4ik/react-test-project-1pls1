@@ -20,15 +20,40 @@
     z-index: 30;
 }
 
+.heading {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #63517A;
+}
+
 .content {
     padding: 52px 29px 32px;
     position: relative;
     text-align: center;
 }
 
-.content h2 {
-    margin: 0;
-    font-size: 24px;
-    line-height: 1.2;
+.modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel {
+    background-color: #F2EEF9;
     color: #63517A;
 }
+
+.accept {
+    background-color: #EDBC33;
+    box-shadow: 0px 6px 10px rgba(237, 188, 51, 0.3);
+    color: #fff;
+}
+
+.saved {
+    background-color: #71B078;
+    box-shadow: 0px 6px 10px rgba(113, 176, 120, 0.3);
+    color: #fff;
+}
+
+

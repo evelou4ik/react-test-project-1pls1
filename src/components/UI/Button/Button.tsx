@@ -4,7 +4,7 @@ interface Props {
   children?: ReactNode;
   type: 'button' | 'submit';
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = (props: Props) => {

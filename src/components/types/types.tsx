@@ -14,21 +14,33 @@ export interface SweepstakeInterface {
 
 export interface InitialStateInterface {
   sweepstakesArray: SweepstakeInterface[] | [];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   filterStatus: string;
+  countOfSweepstakes: number;
+  countOfShowing: number;
+  currentPage: number;
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error?: string | null;
 }
 
-export interface StoreInterface {
-  sweepstakes: InitialStateInterface;
+export interface ColumnHeadInterface {
+  className: string,
+  tableHeadTitle: Array<string>;
+}
+
+export interface ModalOverlay {
+  children: React.ReactNode;
+  className?: string;
 }
 
 export interface BackdropInterface {
   onClose: () => void;
 }
 
-export interface ModalOverlay {
-  children: React.ReactNode;
+export interface CartsRequest {
+  status: string;
+  page: number;
 }
 
 export interface ModalInterface extends Partial<BackdropInterface>, Partial<ModalOverlay>{}
+
+

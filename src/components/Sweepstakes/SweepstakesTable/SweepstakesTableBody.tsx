@@ -3,112 +3,73 @@ import uuid from 'react-uuid';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { SweepstakeInterface } from '../../types/types';
 
-import { fetchSweepstakes, selectAllSweepstakes } from '../../store/sweepstakesSlice';
+import { fetchSweepstakes } from '../../store/sweepstakesSlice';
+import Button from '../../UI/Button/Button';
+import classes from './SweepstakesTableBody.module.css';
+import classesSweepstakes from '../Sweepstakes.module.css';
+import ColumnHead from '../../UI/ColumnHead/ColumnHead';
 
-const correctFormatOfDate = (dt: string) => {
-  const date = new Date(Number(dt));
+interface Props {
+  onShowModal: (link: string) => void;
+}
 
-  const formatDate = {
-    day: date.getDate().toString().padStart(2, '0'),
-    month: (date.getMonth() + 1).toString().padStart(2, '0'),
-    year: date.getFullYear().toString(),
-    hours: date.getHours().toString().padStart(2, '0'),
-    minutes: date.getMinutes().toString().padStart(2, '0')
-  };
+const SweepstakesTableBody = (props: Props) => {
+  const { onShowModal } = props;
 
-  return `${formatDate.day}/${formatDate.month}/${formatDate.year}, ${formatDate.hours}:${formatDate.minutes} EST`;
-};
-
-const updateFormatOfSweepstakes = (sweepstake: SweepstakeInterface) => {
-  return {
-    ...sweepstake,
-    start_date: correctFormatOfDate(sweepstake.start_date),
-    end_date: correctFormatOfDate(sweepstake.end_date),
-    statuses: sweepstake.statuses.map((status) => {
-      const updateStatus = status.split('_').join(' ');
-
-      return updateStatus[0].toUpperCase() + updateStatus.slice(1);
-    })
-  };
-};
-
-const filteredArrayByStatus = (sweepstakes: Array<SweepstakeInterface>, status: string) => {
-  if (status !== 'all') {
-    const filteredArray = sweepstakes.filter(
-      (sweepstake) => sweepstake.status === status
-    );
-
-    return filteredArray.map(updateFormatOfSweepstakes);
-  }
-
-  return sweepstakes.map(updateFormatOfSweepstakes);
-};
-
-const SweepstakesTableBody = () => {
   const dispatch = useAppDispatch();
-  const sweepstakeState = useAppSelector((state) => state.sweepstakes);
-  const sweepstakesData = useAppSelector(selectAllSweepstakes);
-  const sweepstakeStatus = sweepstakeState.status;
-  const sweepstakeFilterStatus = sweepstakeState.filterStatus;
+  const { filterStatus, sweepstakesArray, currentPage, countOfShowing } = useAppSelector((state) => state.sweepstakes);
+
+  const tableHeadTitles = ['Title', 'Focus', 'Raised', 'Entries', 'Status', 'Actions', 'Start date, time', 'End date, time'];
+
+  const request = {status: filterStatus, page: currentPage, limit: countOfShowing}
 
   useEffect(() => {
-    if (sweepstakeStatus === 'idle') {
-      dispatch(fetchSweepstakes());
-    }
-  }, [sweepstakeStatus, dispatch]);
+    dispatch(fetchSweepstakes(request));
 
-  let content;
-
-  if (sweepstakeStatus === 'succeeded') {
-    const orderedSweepstakes = filteredArrayByStatus(sweepstakesData, sweepstakeFilterStatus);
-
-    let actionsContent;
-
-    content = orderedSweepstakes.map((sweepstake: SweepstakeInterface) => {
-      return (
-        <tr key={uuid()}>
-          <td>{sweepstake.title}</td>
-          <td>{sweepstake.focus}</td>
-          <td>{`${sweepstake.raised}`}</td>
-          <td>{sweepstake.entries}</td>
-          <td>
-            {sweepstake.statuses.map((status) => {
-              return <span key={uuid()}>{status}</span>;
-            })}
-          </td>
-          <td>
-            {sweepstake.status === 'active'
-              ? (actionsContent = <button>Promote</button>)
-              : (actionsContent = (
-                  <React.Fragment>
-                    <button>Accept</button>
-                    <button>Decline</button>
-                  </React.Fragment>
-                ))}
-          </td>
-          <td>{sweepstake.start_date}</td>
-          <td>{sweepstake.end_date}</td>
-        </tr>
-      );
-    });
-  }
+  }, [filterStatus, currentPage, countOfShowing]);
 
   return (
     <React.Fragment>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Focus</th>
-            <th>Raised</th>
-            <th>Entries</th>
-            <th>Status</th>
-            <th>Actions</th>
-            <th>Start date, time</th>
-            <th>End date, time</th>
-          </tr>
-        </thead>
-        <tbody>{content}</tbody>
+      <table className={classes.table}>
+        <ColumnHead className={`${classesSweepstakes.text} ${classes['table-title']}`}
+                    tableHeadTitle={tableHeadTitles} />
+        <tbody>{
+          sweepstakesArray.map((sweepstake: SweepstakeInterface) => {
+            return (
+              <tr className={classes['line-wrapper']} key={uuid()}>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.title}</td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.focus}</td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.raised}</td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.entries}</td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>
+                  <div className={classes['status-wrap']}>
+                    {sweepstake.statuses.map((status) => {
+                      const lowerCaseStatus = `status--${status.split(' ').join('_').toLowerCase()}`;
+
+                      return <span className={`${classes.status} ${classes[lowerCaseStatus]}`}
+                                   key={uuid()}>{status}</span>;
+                    })}
+                  </div>
+                </td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>
+                  <div className={classes['btns-wrap']}>
+                    {sweepstake.status === 'active'
+                      ? (<Button type='button' className={`${classes.btn} ${classes['btn--promote']}`}
+                                 onClick={() => onShowModal(sweepstake.link)}>Promote</Button>)
+                      : (
+                        <React.Fragment>
+                          <button className={`${classes.btn} ${classes['btn--accept']}`}>Accept</button>
+                          <button className={`${classes.btn} ${classes['btn--decline']}`}>Decline</button>
+                        </React.Fragment>
+                      )}
+                  </div>
+                </td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.start_date}</td>
+                <td className={`${classesSweepstakes.text} ${classes.column}`}>{sweepstake.end_date}</td>
+              </tr>
+            );
+          })
+        }</tbody>
       </table>
     </React.Fragment>
   );

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Modal from '../UI/Modal/Modal';
-import Button from '../UI/Button/Button';
 
-import ButtonStyles from '../UI/Button/Button.module.css';
+import classesModal from '../UI/Modal/Modal.module.css';
 
 const NoMatch = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -26,17 +25,8 @@ const NoMatch = () => {
   return (
     <React.Fragment>
       {modalIsOpen && (
-        <Modal onClose={closeModalHandler}>
-          <h2>Coming soon...</h2>
-          <Button
-            className={`${ButtonStyles.button} ${ButtonStyles['button-close']}`}
-            type="button"
-            onClick={closeModalHandler}>
-            <div>
-              <span></span>
-              <span></span>
-            </div>
-          </Button>
+        <Modal className={`${classesModal.modal}`} onClose={closeModalHandler}>
+          <h2 className={classesModal.heading}>Coming soon...</h2>
         </Modal>
       )}
     </React.Fragment>

@@ -8,13 +8,12 @@
     margin-bottom: 22px;
 }
 
-.nav-menu ul li a {
+.nav-menu li a {
     display: flex;
     align-items: center;
     text-decoration: none;
 }
-
-.nav-menu ul li .img-wrapper {
+.img-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,4 +22,20 @@
     height: 40px;
     border-radius: 50%;
     background: #EDEDEB;
+    transition-property: background-color;
+    transition-duration: .3s;
 }
+
+.link-icon * {
+    transition-property: fill;
+    transition-duration: .3s;
+}
+
+li:hover a .link-icon * , .active-link .link-icon * {
+    fill: #fff;
+}
+
+.nav-menu li:hover a .img-wrapper, .active-link .img-wrapper {
+    background-color:  #303852;
+}
+

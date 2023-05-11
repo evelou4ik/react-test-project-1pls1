@@ -4,16 +4,32 @@ import { createPortal } from 'react-dom';
 import classes from './Modal.module.css';
 
 import { ModalInterface } from '../../types/types';
+import Button from '../Button/Button';
+import classesButton from '../Button/Button.module.css';
 
 const Backdrop = (props: ModalInterface) => {
   const { onClose } = props;
+
   return <div className={classes.backdrop} onClick={onClose} />;
 };
 
 const ModalOverlay = (props: ModalInterface) => {
+  const { className, children, onClose } = props;
+
   return (
-    <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
+    <div className={className}>
+      <div className={classes.content}>
+        <Button
+          className={`${classesButton.button} ${classesButton['button-close']}`}
+          type="button"
+          onClick={onClose}>
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+        </Button>
+        {children}
+      </div>
     </div>
   );
 };
@@ -21,11 +37,11 @@ const ModalOverlay = (props: ModalInterface) => {
 const portalElement: HTMLElement = document.getElementById('overlays')!;
 
 const Modal = (props: ModalInterface) => {
-  const { onClose } = props;
+  const { onClose, className, children } = props;
   return (
     <React.Fragment>
       {createPortal(<Backdrop onClose={onClose} />, portalElement)}
-      {createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}
+      {createPortal(<ModalOverlay className={className} onClose={onClose}>{children}</ModalOverlay>, portalElement)}
     </React.Fragment>
   );
 };
