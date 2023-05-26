@@ -10,7 +10,7 @@ const SweepstakesPagination = () => {
     <div className={classes['pagination-wrap']}>
       <SweepstakesCountOfShowing />
       <SweepstakesPerPage />
-      <SweepstakesPaginationSwitcher/>
+      <SweepstakesPaginationSwitcher />
     </div>
   );
 };

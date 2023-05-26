@@ -2,16 +2,17 @@ import React from 'react';
 
 import SweepstakesActions from './SweepstakesActions/SweepstakesActions';
 import SweepstakesTable from './SweepstakesTable/SweepstakesTable';
+import TabWrapper from '../UI/TabWrapper/TabWrapper';
 
 const Sweepstakes = () => {
   return (
-    <React.Fragment>
+    <TabWrapper>
       <h2>Sweepstakes</h2>
       <div>
         <SweepstakesActions />
         <SweepstakesTable />
       </div>
-    </React.Fragment>
+    </TabWrapper>
   );
 };
 

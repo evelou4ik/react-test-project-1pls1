@@ -7,11 +7,7 @@ interface Props {
 
 const PaginationColumnWrap = (props: Props) => {
   const { children } = props;
-  return (
-    <div className={classes['pagination-column']}>
-      {children}
-    </div>
-  );
+  return <div className={classes['pagination-column']}>{children}</div>;
 };
 
 export default PaginationColumnWrap;

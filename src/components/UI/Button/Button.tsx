@@ -5,12 +5,13 @@ interface Props {
   type: 'button' | 'submit';
   className?: string;
   onClick?: () => void;
+  isDisabled?: boolean;
 }
 
 const Button = (props: Props) => {
-  const { children, type, className, onClick } = props;
+  const { children, type, className, onClick, isDisabled } = props;
   return (
-    <button type={type} className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick} disabled={isDisabled}>
       {children}
     </button>
   );

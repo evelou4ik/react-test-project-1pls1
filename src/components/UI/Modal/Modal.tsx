@@ -41,7 +41,12 @@ const Modal = (props: ModalInterface) => {
   return (
     <React.Fragment>
       {createPortal(<Backdrop onClose={onClose} />, portalElement)}
-      {createPortal(<ModalOverlay className={className} onClose={onClose}>{children}</ModalOverlay>, portalElement)}
+      {createPortal(
+        <ModalOverlay className={className} onClose={onClose}>
+          {children}
+        </ModalOverlay>,
+        portalElement
+      )}
     </React.Fragment>
   );
 };

@@ -5,16 +5,19 @@ import SidebarMenu from './SidebarMenu';
 import classes from './Sidebar.module.css';
 import logoImage from '../../assets/logo.svg';
 
-const Sidebar = () => {
+interface Props {
+  subSidebarIsActive: boolean;
+}
+
+const Sidebar = (props: Props) => {
+  const { subSidebarIsActive } = props;
   return (
-    <React.Fragment>
-      <div className={classes.sidebar}>
-        <div className={classes['img-wrapper']}>
-          <img src={logoImage} alt="" />
-        </div>
-        <SidebarMenu />
+    <div className={`${classes.sidebar} ${subSidebarIsActive ? classes.abridged : ''}`}>
+      <div className={classes['img-wrapper']}>
+        <img src={logoImage} alt="" />
       </div>
-    </React.Fragment>
+      <SidebarMenu />
+    </div>
   );
 };
 

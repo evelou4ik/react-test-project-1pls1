@@ -7,13 +7,16 @@ const ColumnHead = (props: ColumnHeadInterface) => {
 
   return (
     <thead>
-    <tr>
-      {tableHeadTitle.map((th) => {
-        return <th key={uuid()} className={className}>{th}</th>;
-      })}
-    </tr>
+      <tr>
+        {tableHeadTitle.map((th) => {
+          return (
+            <th key={uuid()} className={className}>
+              {th}
+            </th>
+          );
+        })}
+      </tr>
     </thead>
-
   );
 };
 

@@ -1,3 +1,26 @@
 .per-page {
     margin: 0 12px;
 }
+
+.per-page-text {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #A098AB;
+    text-transform: uppercase;
+}
+
+.per-page-dropdown {
+    padding: 4px 9px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #A098AB;
+    border-color: #A098AB;
+    border-radius: 28px;
+}
+
+.per-page-dropdown:focus {
+    outline: none;
+}

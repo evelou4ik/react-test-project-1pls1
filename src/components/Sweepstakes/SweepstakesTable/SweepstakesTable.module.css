@@ -29,6 +29,11 @@ a:active {
 }
 
 .sweepstake-btn {
+    margin: 0 12px;
+    min-width: 140px;
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 600;
     padding: 16px;
     border-radius: 54px;
     border-color: transparent;
@@ -36,10 +41,10 @@ a:active {
     transition-duration: .5s;
 }
 
-.sweepstake-btn--promote {
-    margin: 0 12px;
-    min-width: 140px;
-    font-size: 14px;
-    line-height: 1.25;
-    font-weight: 600;
+.sweepstake-btn--copy-link {
+    box-shadow: 0 6px 10px rgba(237, 188, 51, 0.3);
+}
+
+.sweepstake-btn--accept {
+    box-shadow: 0 6px 10px rgba(113, 176, 120, 0.3);
 }

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import sweepstakesReducer from './sweepstakesSlice';
+import settingsReducer from './settingsSlice';
 
 export const store = configureStore({
   reducer: {
-    sweepstakes: sweepstakesReducer
+    sweepstakes: sweepstakesReducer,
+    settings: settingsReducer
   }
 });
 
