@@ -1,0 +1,41 @@
+.sidebar-sec {
+    height: 100vh;
+    padding: 40px 0;
+    width: 173px;
+    background-color: #F2EEF9;
+}
+
+.return-link {
+    margin-left: 20px;
+}
+
+.link {
+    display: inline-block;
+    font-size: 10px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #253B86;
+    text-decoration: none;
+}
+
+.menu {
+    margin-top: 200px;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu-item {
+    border-right: 5px solid transparent;
+    transition-property: background-color, border-color;
+    transition-duration: .3s;
+}
+
+.menu-item a {
+    width: 100%;
+    padding: 13.5px 38px;
+}
+
+.menu-item:hover {
+    background-color: #fff;
+    border-color: #253B86;
+}
