@@ -1,0 +1,147 @@
+.dropzone {
+    width: 100%;
+}
+
+.files {
+    margin-bottom: 14px;
+    padding-bottom: 22px;
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    list-style-type: none;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+}
+
+.files li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+
+.file-left {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.icon {
+    display: block;
+    margin-right: 9px;
+}
+
+.file-name {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 250px;
+    text-overflow: ellipsis;
+}
+
+.file-right {
+    display: flex;
+    align-items: center;
+}
+
+.file-size {
+    display: block;
+    margin-right: 5px;
+}
+
+.file-remove {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dropzone_area {
+    position: relative;
+    border: 2px dashed #c4c4c4;
+    width: 100%;
+    padding-top: 59%;
+    margin-bottom: 20px;
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: transparent;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dropzone_area span {
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    border-color: transparent;
+    outline: none;
+    margin: 0 15px;
+    text-transform: uppercase;
+    min-width: 90px;
+    padding: 12.5px 10px;
+    border-radius: 30px;
+}
+
+.btn-transparent {
+    border: 1px solid #63517A;
+    background-color: transparent;
+}
+
+.label-file {
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.label-file span {
+    font-size: 14px;
+    line-height: 1.25;
+    color: #317D9B;
+    letter-spacing: 0.02em;
+    text-decoration-line: underline;
+}
+
+.label-file input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+
+

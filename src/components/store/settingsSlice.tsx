@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PaletteInterface } from '../types/types';
+import { PaletteInterface, TypefacesInterface } from '../types/types';
 
 interface InitialStateInterface {
   palettes: Array<PaletteInterface>;
@@ -8,6 +8,9 @@ interface InitialStateInterface {
   saveIsDisabled: boolean;
   usedPalette: PaletteInterface | null;
   palette: PaletteInterface | null;
+  usedTypefaces: TypefacesInterface | null;
+  typefaces: TypefacesInterface;
+  logos: null | any;
 }
 
 const initialState: InitialStateInterface = {
@@ -16,7 +19,14 @@ const initialState: InitialStateInterface = {
   isEditPaletteMode: false,
   saveIsDisabled: true,
   usedPalette: null,
-  palette: null
+  palette: null,
+  usedTypefaces: null,
+  typefaces: {
+    headerFont: '',
+    subHeaderFont: '',
+    bodyCopyFont: ''
+  },
+  logos: null
 };
 
 const settingsSlice = createSlice({
@@ -82,6 +92,22 @@ const settingsSlice = createSlice({
     },
     resetOptionsOfCreatedPalette: (state) => {
       state.palette = null;
+    },
+    modifyHeaderTypeface: (state, action: PayloadAction<string>) => {
+      state.typefaces.headerFont = action.payload;
+    },
+    modifySubHeaderTypeface: (state, action: PayloadAction<string>) => {
+      state.typefaces.subHeaderFont = action.payload;
+    },
+    modifyBodyCopyTypeface: (state, action: PayloadAction<string>) => {
+      state.typefaces.bodyCopyFont = action.payload;
+    },
+    modifyUsedTypefaces: (state) => {
+      state.usedTypefaces = {
+        headerFont: state.typefaces.headerFont,
+        subHeaderFont: state.typefaces.subHeaderFont,
+        bodyCopyFont: state.typefaces.bodyCopyFont
+      };
     }
   }
 });
@@ -99,7 +125,11 @@ export const {
   modifyPalettePrimaryColor,
   modifyPaletteSecondaryColor,
   modifyPaletteAccentColor,
-  resetOptionsOfCreatedPalette
+  resetOptionsOfCreatedPalette,
+  modifyHeaderTypeface,
+  modifySubHeaderTypeface,
+  modifyBodyCopyTypeface,
+  modifyUsedTypefaces
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

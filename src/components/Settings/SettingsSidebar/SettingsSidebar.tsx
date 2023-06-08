@@ -7,10 +7,10 @@ const SettingsSidebar = () => {
   const { usedPalette } = useAppSelector((state) => state.settings);
   const navigate = useNavigate();
 
-  const openSettingHandler = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
+  const navigateHandler = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
     e.preventDefault();
 
-    navigate(`/settings/${link}`);
+    navigate(link);
   };
 
   return (
@@ -26,7 +26,7 @@ const SettingsSidebar = () => {
           <a
             className={`${classes.link}`}
             href="/settings/branding"
-            onClick={(e) => openSettingHandler(e, 'branding')}>
+            onClick={(e) => navigateHandler(e, 'branding')}>
             Branding
           </a>
         </li>
@@ -39,7 +39,7 @@ const SettingsSidebar = () => {
           <a
             className={`${classes.link}`}
             href="/settings/colors"
-            onClick={(e) => openSettingHandler(e, 'colors')}>
+            onClick={(e) => navigateHandler(e, 'colors')}>
             Colors
           </a>
         </li>
@@ -47,7 +47,7 @@ const SettingsSidebar = () => {
           <a
             className={`${classes.link}`}
             href="/settings/typography"
-            onClick={(e) => openSettingHandler(e, 'typography')}>
+            onClick={(e) => navigateHandler(e, 'typography')}>
             Typography
           </a>
         </li>

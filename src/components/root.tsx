@@ -6,6 +6,7 @@ import { store } from './store/store';
 import Sidebar from './Sidebar/Sidebar';
 
 import classes from './root.module.css';
+import '../fonts/fonts.css';
 
 const Root = () => {
   const [subSidebarIsOpened, setSubSidebarIsOpened] = useState(false);

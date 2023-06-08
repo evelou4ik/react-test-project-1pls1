@@ -7,6 +7,7 @@ import { ReactComponent as ArrowLeft } from '../../../../assets/arr-left.svg';
 import { ReactComponent as ArrowRight } from '../../../../assets/arr-right.svg';
 
 import classes from './SweepstakesPaginationSwitcher.module.css';
+import Button from '../../../UI/Button/Button';
 
 const SweepstakesPaginationSwitcher = () => {
   const { currentPage, countOfSweepstakes, countOfShowing } = useAppSelector(
@@ -27,19 +28,21 @@ const SweepstakesPaginationSwitcher = () => {
 
   return (
     <PaginationColumnWrap>
-      <button
+      <Button
+        type={'button'}
+        onClick={switchPrevPage}
         className={`${classes['btn-switch']} ${classes['btn-prev']}`}
-        disabled={currentPage === 1}
-        onClick={switchPrevPage}>
+        isDisabled={currentPage === 1}>
         <ArrowLeft />
-      </button>
+      </Button>
       <span className={classes['current-page']}>{currentPage}</span>
-      <button
+      <Button
+        type={'button'}
+        onClick={switchNextPage}
         className={`${classes['btn-switch']} ${classes['btn-next']}`}
-        disabled={countOfSweepstakes < countOfShowing}
-        onClick={switchNextPage}>
+        isDisabled={countOfSweepstakes < countOfShowing}>
         <ArrowRight />
-      </button>
+      </Button>
     </PaginationColumnWrap>
   );
 };

@@ -14,9 +14,17 @@
 }
 
 .text {
-    margin: 0 0 32px;
     max-width: 405px;
-    font-size: 14px;
+}
+
+.button {
+    padding: 0;
+    font-size: 18px;
     line-height: 1.25;
+    text-decoration-line: underline;
+    color: #317D9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 

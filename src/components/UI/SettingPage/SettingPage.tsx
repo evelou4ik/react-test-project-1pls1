@@ -10,19 +10,25 @@ interface Props {
 }
 
 const SettingPage = (props: Props) => {
-  const { saveIsDisabled, usedPalette } = useAppSelector((state) => state.settings);
+  const { saveIsDisabled, usedPalette, usedTypefaces } = useAppSelector((state) => state.settings);
   const { title, children, saveChanges } = props;
 
   return (
     <div className={classes.content}>
       <div className={classes.top}>
-        <h2 className={classes.title}>{title}</h2>
+        <h2
+          className={classes.title}
+          style={{
+            fontFamily: `${usedTypefaces?.headerFont ? usedTypefaces.headerFont : 'inherit'}`
+          }}>
+          {title}
+        </h2>
         <button
           className={`${classes['btn-save']} ${saveIsDisabled ? classes.disabled : ''} `}
           type="button"
           onClick={saveChanges}
           disabled={saveIsDisabled}
-          style={{ backgroundColor: usedPalette ? `${usedPalette.accentColor}` : '' }}>
+          style={{ backgroundColor: usedPalette ? `${usedPalette.colorAccent.hex}` : '' }}>
           Save Changes
         </button>
       </div>

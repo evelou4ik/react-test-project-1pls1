@@ -36,3 +36,13 @@ export interface PaletteInterface {
   colorSecondary?: any;
   colorAccent?: any;
 }
+
+export interface TypefacesInterface {
+  headerFont: string;
+  subHeaderFont: string;
+  bodyCopyFont: string;
+}
+
+export interface FileDataInterface extends File {
+  id: string;
+}

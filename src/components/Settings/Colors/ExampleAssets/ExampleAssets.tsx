@@ -16,13 +16,13 @@ const ExampleAssets = () => {
   const { palette } = useAppSelector((state) => state.settings);
 
   return (
-    <div className={classes['example-wrapper']}>
+    <div className={`${classes['example-wrapper']} ${classesSettingPage['content-wrap']}`}>
       <h3 className={classesSettingPage.subtitle}>Example assets</h3>
       <div className={classes['examples-top']}>
         <span
           className={classes.btn}
           style={{
-            backgroundColor: `${palette?.colorSecondary ? palette.colorSecondary.hex : '#315B9C'}`
+            backgroundColor: `${palette?.colorAccent ? palette.colorAccent.hex : '#315B9C'}`
           }}>
           Donate
         </span>
@@ -49,8 +49,8 @@ const ExampleAssets = () => {
         <span
           className={classes['example-banner-text']}
           style={{
-            backgroundColor: palette?.colorAccent
-              ? `rgba(${palette.colorAccent.rgb.r},${palette.colorAccent.rgb.g}, ${palette.colorAccent.rgb.b}, 0.8)`
+            backgroundColor: palette?.colorSecondary
+              ? `rgba(${palette.colorSecondary.rgb.r},${palette.colorSecondary.rgb.g}, ${palette.colorSecondary.rgb.b}, 0.8)`
               : 'rgba(49,91,156,0.8)'
           }}>
           Support Troop 15 - Boy Scouts of America

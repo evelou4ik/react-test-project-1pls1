@@ -1,6 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import uuid from 'react-uuid';
 import { useAppSelector } from '../hooks/hooks';
+import SidebarMenuItem from './SidebarMenuItem';
 
 import classes from './SiderbarMenu.module.css';
 
@@ -13,126 +14,66 @@ import { ReactComponent as RegistrationIcon } from '../../assets/registr-icon.sv
 import { ReactComponent as SettingsIcon } from '../../assets/settings-icon.svg';
 import { ReactComponent as NotifyIcon } from '../../assets/notific-icon.svg';
 
-const setActive = ({ isActive }: any) => (isActive ? classes['active-link'] : '');
-
 const SidebarMenu = () => {
   const { usedPalette } = useAppSelector((state) => state.settings);
+
+  const svgFill = usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852';
+  const sidebarListLinks = [
+    {
+      title: 'Home',
+      link: 'home',
+      IconComponent: HomeIcon
+    },
+    {
+      title: 'Organizations',
+      link: '*',
+      IconComponent: OrganizationIcon
+    },
+    {
+      title: 'Donors',
+      link: '*',
+      IconComponent: DonorsIcon
+    },
+    {
+      title: 'Sweepstakes',
+      link: 'sweepstakes',
+      IconComponent: SweepstakesIcon
+    },
+    {
+      title: 'Users',
+      link: '*',
+      IconComponent: UsersIcon
+    },
+    {
+      title: 'Registration',
+      link: '*',
+      IconComponent: RegistrationIcon
+    },
+    {
+      title: 'Settings',
+      link: 'settings/branding',
+      IconComponent: SettingsIcon
+    },
+    {
+      title: 'Notifications',
+      link: '*',
+      IconComponent: NotifyIcon
+    }
+  ];
 
   return (
     <nav className={classes['nav-menu']}>
       <ul>
-        <li>
-          <NavLink
-            to={`/home`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <HomeIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span className={classes.text}>Home</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`*`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <OrganizationIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Organizations</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`*`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <DonorsIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Donors</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`sweepstakes`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <SweepstakesIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Sweepstakes</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`*`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <UsersIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Users</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`*`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <RegistrationIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Registration</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`settings`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <SettingsIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Settings</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`*`}
-            className={setActive}
-            style={{ color: usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6' }}>
-            <div className={classes['img-wrapper']}>
-              <NotifyIcon
-                className={classes['link-icon']}
-                fill={usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852'}
-              />
-            </div>
-            <span>Notifications</span>
-          </NavLink>
-        </li>
+        {sidebarListLinks.map(({ link, title, IconComponent }) => {
+          return (
+            <SidebarMenuItem
+              key={uuid()}
+              link={link}
+              title={title}
+              svgComponent={<IconComponent className={classes['link-icon']} fill={svgFill} />}
+            />
+          );
+        })}
       </ul>
     </nav>
   );

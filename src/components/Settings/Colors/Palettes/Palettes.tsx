@@ -17,6 +17,7 @@ import classes from './Palettes.module.css';
 import classesSettingPage from '../../../UI/SettingPage/SettingPage.module.css';
 
 import { ReactComponent as TooltipIcon } from '../../../../assets/tooltip-icon.svg';
+import Button from '../../../UI/Button/Button';
 
 const Palettes = () => {
   const { isCreatePaletteMode, isEditPaletteMode, palettes } = useAppSelector(
@@ -31,7 +32,7 @@ const Palettes = () => {
   };
 
   return (
-    <div className={classes['palette-content']}>
+    <div className={`${classes['palette-content']} ${classesSettingPage['content-wrap']}`}>
       <div className={classesSettingPage['title-wrap']}>
         <h3 className={classesSettingPage.subtitle}>Your palette(s)</h3>
         <span className={classesSettingPage['tooltip-icon']}>
@@ -39,7 +40,7 @@ const Palettes = () => {
           <i className={classesSettingPage['tooltip-content']}>Colors</i>
         </span>
       </div>
-      <p className={classes.text}>
+      <p className={`${classesSettingPage.text} ${classes.text}`}>
         Colors make your organization unique. Your brand’s palette is made up of 3 colors: Primary,
         Secondary, and Accent.
       </p>
@@ -59,13 +60,18 @@ const Palettes = () => {
               })}
             </ul>
           )}
-          <ActionBox
-            onClick={() => {
-              dispatch(switchCreatePaletteMode(true));
-              dispatch(createNewPalette(uuid()));
-            }}
-            buttonText="Create a New Palette"
-          />
+          <div>
+            <Button
+              className={classes.button}
+              type="button"
+              onClick={() => {
+                dispatch(switchCreatePaletteMode(true));
+                dispatch(createNewPalette(uuid()));
+              }}>
+              Create a New Palette
+            </Button>
+            <ActionBox />
+          </div>
         </React.Fragment>
       )}
     </div>

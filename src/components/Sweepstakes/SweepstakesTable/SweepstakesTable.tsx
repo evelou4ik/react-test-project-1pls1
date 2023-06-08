@@ -7,7 +7,6 @@ import Modal from '../../UI/Modal/Modal';
 import Button from '../../UI/Button/Button';
 
 import classes from './SweepstakesTable.module.css';
-import classesButton from '../../UI/Button/Button.module.css';
 import classesModal from '../../UI/Modal/Modal.module.css';
 
 const SweepstakesTable = () => {
@@ -85,7 +84,6 @@ const SweepstakesTable = () => {
               type="button"
               onClick={closePromoteModalHandler}
               className={`
-                  ${classesButton.button} 
                   ${classes['sweepstake-btn']} 
                   ${classesModal.cancel}
                 `}>
@@ -95,7 +93,6 @@ const SweepstakesTable = () => {
               type="button"
               onClick={() => handleCopyClick()}
               className={`
-                  ${classesButton.button} 
                   ${classes['sweepstake-btn']} 
                   ${isLinkSaved ? classesModal.saved : classesModal.accept}
                   ${classes['sweepstake-btn--copy-link']}
@@ -118,7 +115,6 @@ const SweepstakesTable = () => {
             <Button
               type="button"
               className={`
-                  ${classesButton.button} 
                   ${classes['sweepstake-btn']} 
                   ${classesModal.cancel}
                 `}
@@ -129,7 +125,6 @@ const SweepstakesTable = () => {
               type="button"
               onClick={() => changeCartStatus(status, selectedCart)}
               className={`
-                  ${classesButton.button} 
                   ${classes['sweepstake-btn']} 
                   ${classesModal.accept}
                   ${classes['sweepstake-btn--accept']}

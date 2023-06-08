@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('ComicSansMS.woff2') format('woff2'),
+    url('ComicSansMS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial Bold';
+    src: url('Arial-BoldMT.woff2') format('woff2'),
+    url('Arial-BoldMT.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('ArialMT.woff2') format('woff2'),
+    url('ArialMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('Georgia.woff2') format('woff2'),
+    url('Georgia.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

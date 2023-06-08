@@ -1,0 +1,17 @@
+.img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #EDEDEB;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+li:hover .img-wrapper {
+    background-color:  #303852;
+}
+

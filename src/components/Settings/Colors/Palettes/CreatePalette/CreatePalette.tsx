@@ -29,7 +29,7 @@ const CreatePalette = () => {
       } else {
         dispatch(setSaveIsDisabled(true));
       }
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(identifier);

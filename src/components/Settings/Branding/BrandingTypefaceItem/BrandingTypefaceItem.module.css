@@ -1,0 +1,23 @@
+.heading {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 53px;
+    line-height: 1.25;
+    color: #0E0E2C;
+}
+
+.subheading {
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1.1;
+    color: #4A4A68;
+}
+
+.body-copy {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #4A4A68;
+}
