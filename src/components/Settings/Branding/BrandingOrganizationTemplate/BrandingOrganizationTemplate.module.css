@@ -1,0 +1,15 @@
+.organization-template {
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+    border: 1px solid #C4C4C4;
+    border-radius: 20px;
+}
+
+.template-title {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 18px;
+    line-height: 1.25;
+    color: #63517A;
+}

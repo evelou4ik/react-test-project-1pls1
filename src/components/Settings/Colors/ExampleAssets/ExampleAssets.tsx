@@ -1,5 +1,9 @@
 import React from 'react';
-import { useAppSelector } from '../../../hooks/hooks';
+import { ExampleIconsInterface } from '../../../types/types';
+import uuid from 'react-uuid';
+
+import ExampleBanner from './ExampleBanner/ExampleBanner';
+import ExampleIcons from './ExampleIcons/ExampleIcons';
 
 import classes from './ExampleAssets.module.css';
 import classesSettingPage from '../../../UI/SettingPage/SettingPage.module.css';
@@ -9,53 +13,40 @@ import { ReactComponent as PlusIcon } from '../../../../assets/plus-icon.svg';
 import { ReactComponent as DownloadIcon } from '../../../../assets/download-icon.svg';
 import { ReactComponent as MailIcon } from '../../../../assets/mail-icon.svg';
 import { ReactComponent as CalendarIcon } from '../../../../assets/calendar-icon.svg';
-
-import exampleImage from '../../../../assets/example-bg.jpg';
+import ExampleButton from './ExampleButton/ExampleButton';
 
 const ExampleAssets = () => {
-  const { palette } = useAppSelector((state) => state.settings);
+  const exampleListSvg: Array<ExampleIconsInterface> = [
+    {
+      IconComponent: LikeIcon,
+      key: uuid()
+    },
+    {
+      IconComponent: PlusIcon,
+      key: uuid()
+    },
+    {
+      IconComponent: DownloadIcon,
+      key: uuid()
+    },
+    {
+      IconComponent: MailIcon,
+      key: uuid()
+    },
+    {
+      IconComponent: CalendarIcon,
+      key: uuid()
+    }
+  ];
 
   return (
     <div className={`${classes['example-wrapper']} ${classesSettingPage['content-wrap']}`}>
       <h3 className={classesSettingPage.subtitle}>Example assets</h3>
       <div className={classes['examples-top']}>
-        <span
-          className={classes.btn}
-          style={{
-            backgroundColor: `${palette?.colorAccent ? palette.colorAccent.hex : '#315B9C'}`
-          }}>
-          Donate
-        </span>
-        <ul className={classes['icons-list']}>
-          <li className={classes['icons-item']}>
-            <LikeIcon fill={palette?.colorPrimary ? palette.colorPrimary.hex : '#315B9C'} />
-          </li>
-          <li className={classes['icons-item']}>
-            <PlusIcon fill={palette?.colorPrimary ? palette.colorPrimary.hex : '#315B9C'} />
-          </li>
-          <li className={classes['icons-item']}>
-            <DownloadIcon fill={palette?.colorPrimary ? palette.colorPrimary.hex : '#315B9C'} />
-          </li>
-          <li className={classes['icons-item']}>
-            <MailIcon fill={palette?.colorPrimary ? palette.colorPrimary.hex : '#315B9C'} />
-          </li>
-          <li className={classes['icons-item']}>
-            <CalendarIcon fill={palette?.colorPrimary ? palette.colorPrimary.hex : '#315B9C'} />
-          </li>
-        </ul>
+        <ExampleButton title="Donate" />
+        <ExampleIcons icons={exampleListSvg} />
       </div>
-      <div className={classes['example-banner']}>
-        <img src={exampleImage} alt="example background image" />
-        <span
-          className={classes['example-banner-text']}
-          style={{
-            backgroundColor: palette?.colorSecondary
-              ? `rgba(${palette.colorSecondary.rgb.r},${palette.colorSecondary.rgb.g}, ${palette.colorSecondary.rgb.b}, 0.8)`
-              : 'rgba(49,91,156,0.8)'
-          }}>
-          Support Troop 15 - Boy Scouts of America
-        </span>
-      </div>
+      <ExampleBanner />
     </div>
   );
 };

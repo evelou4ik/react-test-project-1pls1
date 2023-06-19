@@ -4,6 +4,7 @@ import { useAppSelector } from '../hooks/hooks';
 import { NavLink } from 'react-router-dom';
 import classes from './SidebarMenuItem.module.css';
 import SvgComponent from '../UI/SvgComponent/SvgComponent';
+import { getColorFromPaletteOrDefault } from '../helpers/helpers';
 
 interface Props {
   link: string;
@@ -17,11 +18,14 @@ const SidebarMenuItem = (props: Props) => {
   const { link, title, svgComponent } = props;
   const { usedPalette } = useAppSelector((state) => state.settings);
 
-  const linkColor = usedPalette ? `${usedPalette.colorPrimary.hex}` : '#9689A6';
-
   return (
     <li>
-      <NavLink to={link} className={setActive} style={{ color: linkColor }}>
+      <NavLink
+        to={link}
+        className={setActive}
+        style={{
+          color: getColorFromPaletteOrDefault(usedPalette, usedPalette?.colorPrimary.hex, '#9689A6')
+        }}>
         <div className={classes['img-wrapper']}>
           <SvgComponent svgComponent={svgComponent} />
         </div>

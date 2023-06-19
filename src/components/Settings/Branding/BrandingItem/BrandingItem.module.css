@@ -1,0 +1,24 @@
+.organization-content {
+    display: flex;
+    margin: 0 0 48px;
+}
+
+.organization-wrap:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.title {
+    margin: 0 0 7px 0;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #000;
+}
+
+.link {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1.2;
+    text-decoration-line: underline;
+    color: #317D9B;
+}

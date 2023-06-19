@@ -5,13 +5,14 @@ import uuid from 'react-uuid';
 
 import BrandingItem from './BrandingItem/BrandingItem';
 import BrandingTypefaceItem from './BrandingTypefaceItem/BrandingTypefaceItem';
+import BrandingPaletteItem from './BrandingPaletteItem/BrandingPaletteItem';
+import BrandingOrganizationTemplate from './BrandingOrganizationTemplate/BrandingOrganizationTemplate';
 import Dropzone from '../../UI/Dropzone/Dropzone';
 import Modal from '../../UI/Modal/Modal';
 
 import classes from './Branding.module.css';
 import classesModal from '../../UI/Modal/Modal.module.css';
 import brandingTypefaceItemClasses from './BrandingTypefaceItem/BrandingTypefaceItem.module.css';
-import BrandingPaletteItem from './BrandingPaletteItem/BrandingPaletteItem';
 
 const Branding = () => {
   const [uploadModalIsOpen, setUploadModalIsOpen] = useState(false);
@@ -56,31 +57,14 @@ const Branding = () => {
           <ul className={classes['organization-list']}>
             {palettes.map((el) => {
               return (
-                <li key={uuid()} className={classes['organization-template']}>
-                  <span className={classes['template-title']}>{el.name}</span>
-                  <div className={classes.palettes}>
-                    <div className={classes.palette}>
-                      <span
-                        className={classes['palette-color-box']}
-                        style={{ backgroundColor: `${el.colorPrimary.hex}` }}
-                      />
-                      <span className={classes['palette-color']}>Primary</span>
+                <li key={uuid()}>
+                  <BrandingOrganizationTemplate title={el.name}>
+                    <div className={classes.palettes}>
+                      <BrandingPaletteItem color={el.colorPrimary.hex} title="Primary" />
+                      <BrandingPaletteItem color={el.colorSecondary.hex} title="Secondary" />
+                      <BrandingPaletteItem color={el.colorAccent.hex} title="Accent" />
                     </div>
-                    <div className={classes.palette}>
-                      <span
-                        className={classes['palette-color-box']}
-                        style={{ backgroundColor: `${el.colorSecondary.hex}` }}
-                      />
-                      <span className={classes['palette-color']}>Secondary</span>
-                    </div>
-                    <div className={classes.palette}>
-                      <span
-                        className={classes['palette-color-box']}
-                        style={{ backgroundColor: `${el.colorAccent.hex}` }}
-                      />
-                      <span className={classes['palette-text']}>Accent</span>
-                    </div>
-                  </div>
+                  </BrandingOrganizationTemplate>
                 </li>
               );
             })}
@@ -88,13 +72,12 @@ const Branding = () => {
         )}
       </BrandingItem>
       {usedTypefaces ? (
-        <div className={classes['organization-template']}>
+        <BrandingOrganizationTemplate title="Selected Typography">
           <a
             className={classes['link-coverage']}
             href="/settings/typography"
             onClick={(e) => navigateHandler(e, '/settings/typography')}
           />
-          <span className={classes['template-title']}>Selected Typography</span>
           <BrandingTypefaceItem
             className={`${brandingTypefaceItemClasses.heading}`}
             title="Header"
@@ -110,7 +93,7 @@ const Branding = () => {
             title="Body copy"
             fontFamily={usedTypefaces.bodyCopyFont}
           />
-        </div>
+        </BrandingOrganizationTemplate>
       ) : (
         <BrandingItem
           title="Typography"

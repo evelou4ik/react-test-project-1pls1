@@ -13,64 +13,81 @@ import { ReactComponent as UsersIcon } from '../../assets/users-icon.svg';
 import { ReactComponent as RegistrationIcon } from '../../assets/registr-icon.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/settings-icon.svg';
 import { ReactComponent as NotifyIcon } from '../../assets/notific-icon.svg';
+import { getColorFromPaletteOrDefault } from '../helpers/helpers';
 
 const SidebarMenu = () => {
   const { usedPalette } = useAppSelector((state) => state.settings);
 
-  const svgFill = usedPalette ? `${usedPalette.colorPrimary.hex}` : '#303852';
   const sidebarListLinks = [
     {
       title: 'Home',
       link: 'home',
-      IconComponent: HomeIcon
+      IconComponent: HomeIcon,
+      key: uuid()
     },
     {
       title: 'Organizations',
       link: '*',
-      IconComponent: OrganizationIcon
+      IconComponent: OrganizationIcon,
+      key: uuid()
     },
     {
       title: 'Donors',
       link: '*',
-      IconComponent: DonorsIcon
+      IconComponent: DonorsIcon,
+      key: uuid()
     },
     {
       title: 'Sweepstakes',
       link: 'sweepstakes',
-      IconComponent: SweepstakesIcon
+      IconComponent: SweepstakesIcon,
+      key: uuid()
     },
     {
       title: 'Users',
       link: '*',
-      IconComponent: UsersIcon
+      IconComponent: UsersIcon,
+      key: uuid()
     },
     {
       title: 'Registration',
       link: '*',
-      IconComponent: RegistrationIcon
+      IconComponent: RegistrationIcon,
+      key: uuid()
     },
     {
       title: 'Settings',
       link: 'settings/branding',
-      IconComponent: SettingsIcon
+      IconComponent: SettingsIcon,
+      key: uuid()
     },
     {
       title: 'Notifications',
       link: '*',
-      IconComponent: NotifyIcon
+      IconComponent: NotifyIcon,
+      key: uuid()
     }
   ];
 
   return (
     <nav className={classes['nav-menu']}>
       <ul>
-        {sidebarListLinks.map(({ link, title, IconComponent }) => {
+        {sidebarListLinks.map(({ link, title, IconComponent, key }) => {
           return (
             <SidebarMenuItem
-              key={uuid()}
+              key={key}
               link={link}
               title={title}
-              svgComponent={<IconComponent className={classes['link-icon']} fill={svgFill} />}
+              svgComponent={
+                <IconComponent
+                  className={classes['link-icon']}
+                  fill={getColorFromPaletteOrDefault(
+                    usedPalette,
+                    usedPalette?.colorPrimary.hex,
+                    '#303852'
+                  )}
+                />
+              }
             />
           );
         })}

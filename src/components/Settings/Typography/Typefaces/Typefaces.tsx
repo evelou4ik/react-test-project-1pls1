@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
-
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import SelectHandler from '../../../UI/SelectHandler/SelectHandler';
 
-import classes from './Typefaces.module.css';
 import classesSettingPage from '../../../UI/SettingPage/SettingPage.module.css';
-import { ReactComponent as TooltipIcon } from '../../../../assets/tooltip-icon.svg';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+
 import {
   modifyHeaderTypeface,
   modifySubHeaderTypeface,
   modifyBodyCopyTypeface,
   setSaveIsDisabled
 } from '../../../store/settingsSlice';
+import SettingsInfo from '../../../UI/SettingsInfo/SettingsInfo';
 
 const Typefaces = () => {
   const fonts = ['Arial', 'Arial Bold', 'Georgia', 'Comic Sans MS'];
@@ -41,17 +40,12 @@ const Typefaces = () => {
 
   return (
     <div className={`${classesSettingPage['content-wrap']}`}>
-      <div className={classesSettingPage['title-wrap']}>
-        <h3 className={classesSettingPage.subtitle}>Typefaces, fonts</h3>
-        <span className={classesSettingPage['tooltip-icon']}>
-          <TooltipIcon />
-          <i className={classesSettingPage['tooltip-content']}>Fonts</i>
-        </span>
-      </div>
-      <p className={`${classesSettingPage.text} ${classes.text}`}>
-        Your organization’s typefaces live here and affect how your pages appear on the UncommonGood
-        platform.
-      </p>
+      <SettingsInfo
+        title="Typefaces, fonts"
+        tooltipText="Fonts"
+        description="Your organization’s typefaces live here and affect how your pages appear on the UncommonGood
+        platform."
+      />
       <SelectHandler
         title="Header"
         options={fonts}

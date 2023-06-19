@@ -12,12 +12,12 @@ import {
 import PalettesItem from './PalettesItem/PalettesItem';
 import ActionBox from '../../../UI/ActionBox/ActionBox';
 import CreatePalette from './CreatePalette/CreatePalette';
+import Button from '../../../UI/Button/Button';
 
 import classes from './Palettes.module.css';
 import classesSettingPage from '../../../UI/SettingPage/SettingPage.module.css';
 
 import { ReactComponent as TooltipIcon } from '../../../../assets/tooltip-icon.svg';
-import Button from '../../../UI/Button/Button';
 
 const Palettes = () => {
   const { isCreatePaletteMode, isEditPaletteMode, palettes } = useAppSelector(

@@ -1,6 +1,7 @@
 import React from 'react';
-import classes from '../Branding.module.css';
 import ActionBox from '../../../UI/ActionBox/ActionBox';
+
+import classes from './BrandingItem.module.css';
 
 interface Props {
   title: string;
@@ -19,12 +20,14 @@ const BrandingItem = (props: Props) => {
   return (
     <div className={classes['organization-wrap']}>
       <h3 className={classes.title}>{title}</h3>
-      {children}
-      <div className={classes['organization-action']}>
-        {isVisibleActionBox && <ActionBox classes={classNameActionBox} />}
-        <a className={classes.link} href={linkHref} onClick={onClick}>
-          {linkText}
-        </a>
+      <div className={classes['organization-content']}>
+        {children}
+        <div className={classes['organization-action']}>
+          {isVisibleActionBox && <ActionBox classes={classNameActionBox} />}
+          <a className={classes.link} href={linkHref} onClick={onClick}>
+            {linkText}
+          </a>
+        </div>
       </div>
     </div>
   );

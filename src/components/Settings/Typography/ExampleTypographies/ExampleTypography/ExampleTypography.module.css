@@ -1,0 +1,26 @@
+.heading {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 53px;
+    line-height: 1.25;
+    color: #0E0E2C;
+    text-transform: capitalize;
+}
+
+.subheading {
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+    font-size: 14px;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #4A4A68;
+}
+
+.body-copy {
+    display: block;
+    max-width: 475px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #4A4A68;
+}

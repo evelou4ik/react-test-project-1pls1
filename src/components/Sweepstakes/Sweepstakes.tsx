@@ -4,6 +4,7 @@ import SweepstakesActions from './SweepstakesActions/SweepstakesActions';
 import SweepstakesTable from './SweepstakesTable/SweepstakesTable';
 import TabWrapper from '../UI/TabWrapper/TabWrapper';
 import { useAppSelector } from '../hooks/hooks';
+import { getTypefaceFromTypographiesOrDefault } from '../helpers/helpers';
 
 const Sweepstakes = () => {
   const { usedTypefaces } = useAppSelector((state) => state.settings);
@@ -12,7 +13,10 @@ const Sweepstakes = () => {
     <TabWrapper>
       <h2
         style={{
-          fontFamily: `${usedTypefaces?.headerFont ? usedTypefaces.headerFont : 'inherit'}`
+          fontFamily: getTypefaceFromTypographiesOrDefault(
+            usedTypefaces,
+            usedTypefaces?.headerFont ?? 'inherit'
+          )
         }}>
         Sweepstakes
       </h2>

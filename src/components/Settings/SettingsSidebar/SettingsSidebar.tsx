@@ -1,56 +1,52 @@
 import React from 'react';
 import classes from './SettingsSidebar.module.css';
-import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
+import SettingsSidebarMenuItem from './SettingsSidebarMenuItem';
+import uuid from 'react-uuid';
+import ButtonBackToPrevPage from '../../UI/ButtonBackToPrevPage/ButtonBackToPrevPage';
+import { getColorFromPaletteOrDefault } from '../../helpers/helpers';
 
 const SettingsSidebar = () => {
   const { usedPalette } = useAppSelector((state) => state.settings);
-  const navigate = useNavigate();
 
-  const navigateHandler = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
-    e.preventDefault();
-
-    navigate(link);
-  };
+  const sidebarListLinks = [
+    {
+      title: 'Branding',
+      link: 'branding',
+      key: uuid()
+    },
+    {
+      title: 'Logos',
+      link: '#',
+      key: uuid()
+    },
+    {
+      title: 'Colors',
+      link: 'colors',
+      key: uuid()
+    },
+    {
+      title: 'Typography',
+      link: 'typography',
+      key: uuid()
+    }
+  ];
 
   return (
     <div
       className={classes['sidebar-sec']}
-      style={{ backgroundColor: usedPalette ? `${usedPalette.colorSecondary.hex}` : '#F2EEF9' }}>
-      <a className={`${classes.link} ${classes['return-link']}`} href="#">
-        {' '}
-        Back to prev page
-      </a>
+      style={{
+        backgroundColor: getColorFromPaletteOrDefault(
+          usedPalette,
+          usedPalette?.colorSecondary.hex,
+          '#F2EEF9'
+        )
+      }}>
+      <ButtonBackToPrevPage title="Back to prev page" />
       <ul className={classes.menu}>
-        <li className={classes['menu-item']}>
-          <a
-            className={`${classes.link}`}
-            href="/settings/branding"
-            onClick={(e) => navigateHandler(e, 'branding')}>
-            Branding
-          </a>
-        </li>
-        <li className={classes['menu-item']}>
-          <a className={`${classes.link}`} href="#">
-            Logos
-          </a>
-        </li>
-        <li className={classes['menu-item']}>
-          <a
-            className={`${classes.link}`}
-            href="/settings/colors"
-            onClick={(e) => navigateHandler(e, 'colors')}>
-            Colors
-          </a>
-        </li>
-        <li className={classes['menu-item']}>
-          <a
-            className={`${classes.link}`}
-            href="/settings/typography"
-            onClick={(e) => navigateHandler(e, 'typography')}>
-            Typography
-          </a>
-        </li>
+        {sidebarListLinks.map(({ title, link, key }) => {
+          return <SettingsSidebarMenuItem key={key} title={title} link={link} />;
+        })}
       </ul>
     </div>
   );

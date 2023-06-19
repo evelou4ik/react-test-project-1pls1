@@ -5,6 +5,7 @@ import { changeFilterStatus, updatePaginationPage } from '../../store/sweepstake
 import Button from '../../UI/Button/Button';
 import classes from './SweepstakesFilters.module.css';
 import sweepstakesClasses from '../Sweepstakes.module.css';
+import uuid from 'react-uuid';
 
 const SweepstakesFilters = () => {
   const dispatch = useAppDispatch();
@@ -19,38 +20,49 @@ const SweepstakesFilters = () => {
     dispatch(updatePaginationPage(1));
   };
 
+  const filters = [
+    {
+      title: 'all',
+      key: uuid()
+    },
+    {
+      title: 'active',
+      key: uuid()
+    },
+    {
+      title: 'inactive',
+      key: uuid()
+    }
+  ];
+
+  const capitalizeFirstLetter = (word: string) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
   return (
-    <div className={classes['filters-wrapper']}>
+    <div className={classes.filters}>
       <span className={` ${sweepstakesClasses.text} ${classes.text} ${classes.title} `}>
         Filters:
       </span>
-      <Button
-        className={`${classes.btn} ${classes.text}  ${
-          filterStatus === 'all' ? classes.active : ''
-        }`}
-        type="button"
-        onClick={() => onChangeStatus('all')}>
-        All
-      </Button>
-      <Button
-        className={`${classes.btn} ${sweepstakesClasses.text} ${classes.text} ${
-          filterStatus === 'active' ? classes.active : ''
-        }`}
-        type="button"
-        onClick={() => onChangeStatus('active')}>
-        Active
-      </Button>
-      <Button
-        className={`${classes.btn} ${sweepstakesClasses.text} ${classes.text} ${
-          filterStatus === 'inactive' ? classes.active : ''
-        }`}
-        type="button"
-        onClick={() => onChangeStatus('inactive')}>
-        Inactive
-      </Button>
-      <span className={`${sweepstakesClasses.text} ${classes.text}`}>
-        {countOfCompletedSweepstakes.length} Completed
-      </span>
+      <ul className={classes['filters-wrapper']}>
+        {filters.map(({ title, key }) => {
+          return (
+            <li key={key}>
+              <Button
+                className={`${classes.btn} ${sweepstakesClasses.text} ${classes.text}  ${
+                  filterStatus === title ? classes.active : ''
+                }`}
+                type="button"
+                onClick={() => onChangeStatus(title)}>
+                {capitalizeFirstLetter(title)}
+              </Button>
+            </li>
+          );
+        })}
+        <span className={`${sweepstakesClasses.text} ${classes.text}`}>
+          {countOfCompletedSweepstakes.length} Completed
+        </span>
+      </ul>
     </div>
   );
 };

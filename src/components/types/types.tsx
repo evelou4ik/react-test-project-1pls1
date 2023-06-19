@@ -46,3 +46,8 @@ export interface TypefacesInterface {
 export interface FileDataInterface extends File {
   id: string;
 }
+
+export interface ExampleIconsInterface {
+  IconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  key: string;
+}

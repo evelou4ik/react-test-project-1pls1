@@ -1,13 +1,14 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { updatePaginationPage } from '../../../store/sweepstakesSlice';
+
 import PaginationColumnWrap from '../../../UI/PaginationCartWrapper/PaginationColumnWrap';
+import Button from '../../../UI/Button/Button';
 
 import { ReactComponent as ArrowLeft } from '../../../../assets/arr-left.svg';
 import { ReactComponent as ArrowRight } from '../../../../assets/arr-right.svg';
 
 import classes from './SweepstakesPaginationSwitcher.module.css';
-import Button from '../../../UI/Button/Button';
 
 const SweepstakesPaginationSwitcher = () => {
   const { currentPage, countOfSweepstakes, countOfShowing } = useAppSelector(

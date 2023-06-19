@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
-import PaginationColumnWrap from '../../../UI/PaginationCartWrapper/PaginationColumnWrap';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { updateCountOfShowing, updatePaginationPage } from '../../../store/sweepstakesSlice';
 import uuid from 'react-uuid';
+
+import PaginationColumnWrap from '../../../UI/PaginationCartWrapper/PaginationColumnWrap';
 
 import classes from './SweepstakesPerPage.module.css';
 
